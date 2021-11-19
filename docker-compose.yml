@@ -38,16 +38,15 @@ services:
     hostname: logstash
     volumes:
       - type: bind
-        source: ./logstash/pipeline
-        target: /usr/share/logstash/pipeline
+        source: ./logstash/pipeline/logstash.conf
+        target: /usr/share/logstash/pipeline/logstash.conf
       - type: bind
         source: ./logstash/input
         target: /usr/share/logstash/input
+    command: logstash -f /usr/share/logstash/pipeline/logstash.conf
     ports:
       - "9600:9600"
-      - "5044:5044"
-    environment:
-      - LS_JAVA_OPTS="-Xmx512m -Xmx512m"
+      - "5000:5000"
     depends_on:
       - elasticsearch
     networks:
