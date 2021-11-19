@@ -6,7 +6,8 @@
 #### 1) Clone repository
 #### 2) Use "docker-compose up -d --build" to build and run Elastic Stack containers
 #### 3) Create index pattern in Kibana
-#### 4) Check out collected data in Discovery tab
+#### 4) Analyze collected data in Discovery tab
+![kibana_discovery](/images/kibana_discovery.png)
 
 ### TODO:
 #### 1) Kibana dashboards
