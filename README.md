@@ -7,7 +7,7 @@
 #### 2) Use "docker-compose up -d --build" to build and run Elastic Stack containers
 #### 3) Create index pattern in Kibana
 #### 4) Analyze collected data in Discovery tab
-![kibana_discovery](/images/kibana_discovery.png)
+![kibana_discover](/images/kibana_discover.png)
 
 ### TODO:
 #### 1) Kibana dashboards
