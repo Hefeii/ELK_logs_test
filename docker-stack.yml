@@ -43,7 +43,7 @@ services:
     container_name: logstash
     hostname: logstash
     volumes:
-       bind logstash configuration file
+      # bind logstash configuration file
       - type: bind
         source: ./logstash/pipeline/logstash.conf
         target: /usr/share/logstash/pipeline/logstash.conf
