@@ -51,6 +51,17 @@ services:
       - elasticsearch
     networks:
       - elk
+  
+  jupyter:
+    image: jupyter/base-notebook:latest
+    container_name: jupyter
+    hostname: jupyter
+    volumes:
+      - type: volume
+        source: jupyter
+        target: /usr/share/jupyter/notebooks
+    ports:
+      - "8888:8888"
 
 networks:
   elk:
@@ -58,3 +69,4 @@ networks:
 
 volumes:
   elasticsearch:
+  jupyter:

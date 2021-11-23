@@ -4,14 +4,11 @@ Using [apache-http-logs](https://github.com/ocatak/apache-http-logs.git) and [St
 
 ### Steps:
 1. Clone repository
-2. Build docker containers using "docker-compose build"
-3. Start Elastic Stack containers using:
+2. Start Elastic Stack containers using:
 - "docker-compose up -d"
-- "docker swarm init" -> "docker stack deploy -c docker.stack.yml elk" (to run as a swarm)
+- or "docker swarm init" -> "docker stack deploy -c docker.stack.yml elk" (to run as a swarm)
 ![swarm](/images/swarm.png)
-4. Create index pattern in Kibana for chosen index ("logs" or "datasets")
-5. Analyze data in Discovery tab or create Dashboard with visualizations
+3. Create index pattern in Kibana for chosen index ("logs" or "datasets")
+4. Analyze data in Discovery tab or create Dashboard with visualizations
 ![kibana_discover](/images/kibana_discover.png)
-
-### TODO:
-1.  Kibana dashboards
+5. Open Jupyter Notebook -> http://127.0.0.1:8888/
