@@ -56,7 +56,7 @@ services:
       - elk
   
   jupyter:
-    image: jupyter/base-notebook:latest
+    image: jupyter/scipy-notebook:latest
     container_name: jupyter
     hostname: jupyter
     volumes:

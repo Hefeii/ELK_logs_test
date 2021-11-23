@@ -13,6 +13,7 @@ services:
       - cluster.name=docker_cluster
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.type=single-node
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -64,7 +65,9 @@ services:
       replicas: 1
   
   jupyter:
-    image: jupyter/base-notebook:latest
+    # scipy-notebook weighs ~800mb so if you need space use base-notebook and add
+    # needed libraries with dockerfile
+    image: jupyter/scipy-notebook:latest
     container_name: jupyter
     hostname: jupyter
     volumes:
