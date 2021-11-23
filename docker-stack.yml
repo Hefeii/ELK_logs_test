@@ -5,6 +5,7 @@ services:
     container_name: elasticsearch
     hostname: elasticsearch
     volumes:
+      # define folder to store elasticsearch data in container
       - type: volume
         source: elasticsearch
         target: /usr/share/elasticsearch/data
@@ -12,7 +13,6 @@ services:
       - cluster.name=docker_cluster
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-      - discovery.type=single-node
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -43,9 +43,11 @@ services:
     container_name: logstash
     hostname: logstash
     volumes:
+       bind logstash configuration file
       - type: bind
         source: ./logstash/pipeline/logstash.conf
         target: /usr/share/logstash/pipeline/logstash.conf
+      # bind folder containing input files for logstash
       - type: bind
         source: ./logstash/input
         target: /usr/share/logstash/input
@@ -55,6 +57,25 @@ services:
       - "5000:5000"
     depends_on:
       - elasticsearch
+    networks:
+      - elk
+    deploy:
+      mode: replicated
+      replicas: 1
+  
+  jupyter:
+    image: jupyter/base-notebook:latest
+    container_name: jupyter
+    hostname: jupyter
+    volumes:
+      # bind notebooks to container
+      - type: bind
+        source: ./jupyter/notebooks
+        target: /home/jovyan
+    # removing login credentials is unsafe, use only for testing purposes
+    command: jupyter notebook --NotebookApp.token='' --NotebookApp.password=''
+    ports:
+      - "8888:8888"
     networks:
       - elk
     deploy:
